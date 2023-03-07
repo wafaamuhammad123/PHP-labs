@@ -3,16 +3,8 @@ require_once("config.php");
 require_once("functions.php");
 
 if(!empty($_POST)){
-    if (empty($_POST["name"])){
-        $error = "The name cannot be blanked";
-    }
- elseif  (empty($_POST["email"])) {
-    $error = "The email cannot be blanked";
- } 
-     elseif (empty($_POST["message"])) {
-        $error = "The message cannot be blanked";
-     }
-      
+    if(empty($_POST["name"]) ||empty($_POST["email"]) || empty($_POST["message"]) ){
+        $error = "The Data cannot be blanked";
     }elseif(strlen($_POST["name"]) > MAX_NAME_LENGTH){
         $error = "Name must be less than less than 100 charchters";
     }elseif(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)){
@@ -28,7 +20,7 @@ if(!empty($_POST)){
         
         die($error);
     }
-
+}
 
 
 require_once("views/form.php");
