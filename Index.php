@@ -3,6 +3,7 @@ require_once("config.php");
 require_once("functions.php");
 
 if(!empty($_POST)){
+   
     if(empty($_POST["name"]) ||empty($_POST["email"]) || empty($_POST["message"]) ){
         $error = "The Data cannot be blanked";
     }elseif(strlen($_POST["name"]) > MAX_NAME_LENGTH){
@@ -13,6 +14,8 @@ if(!empty($_POST)){
         $error = "Message must be less than less than 255 charchters";
     }
     else{
+        
+        save_to_file();
         $error = "<strong>". WELCOME_MESSAGE ."</strong> </br></br>
                   <strong>Name: </strong>" .$_POST["name"] . "</br>".
                   "<strong>Email: </strong>" .$_POST["email"] . "</br>".
@@ -23,6 +26,10 @@ if(!empty($_POST)){
 }
 
 
-require_once("views/form.php");
+$parameter = isset($_GET["page"]) ? $_GET["page"] : "";
+if ($parameter === "contact")
+    require_once("views/form.php");
+else
+    require_once("views/users.php");
 
 ?>

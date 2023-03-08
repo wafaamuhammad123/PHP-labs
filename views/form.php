@@ -20,18 +20,19 @@ margin-top: 6px;
 margin-bottom: 16px;
 resize: vertical;
 }
-input[type=submit]
+button
 {
 background-color:#b58b27;
 color: white;
 padding: 12px 20px;
 border: none;
+font-size:18px;
 
 border-radius: 4px;
 cursor: pointer;
 }     
 
-input[type=submit]:hover {
+button:hover {
 color:black;
 background-color: white;
 }
@@ -71,7 +72,7 @@ padding: 20px;
                 <textarea id="message" class="input" name="message" rows="7" cols="30"><?php echo validate_form("message")?></textarea><br />
             </div>
 
-            <input id="submit" name="submit" type="submit" value="Submit" />
+            <button id="submit" name="submit" type="submit">submit </button>
            
 
         </form></div>
